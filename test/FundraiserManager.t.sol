@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import "forge-std/Test.sol";
-import "../contracts/FundraiserManager.sol";
+import {Test} from "forge-std/Test.sol";
+import {FundraiserManager} from "../contracts/FundraiserManager.sol";
+
 
 contract FundraiserManagerTest is Test {
     FundraiserManager manager;

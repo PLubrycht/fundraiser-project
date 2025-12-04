@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = "0x6cF7C36821186C66F5DC06e1Ab9610f15C548a0d";
+export const CONTRACT_ADDRESS = "0xF3Ba5E664cBE1b5D7b1DC9F3a047a964AC3df2bA";
 export const RPC_FALLBACK = "https://ethereum-sepolia-rpc.publicnode.com";
 export const CONTRACT_ABI = [
   {
