@@ -29,7 +29,7 @@ export default function FundraiserCard({ id, f, contract, refresh }) {
       refresh();
     } catch (err) {
       console.error("Withdrawn error:", err);
-      alert("SOmething went wrong");
+      alert("Thats not nice to steal You ******");
     }
   }
 
