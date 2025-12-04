@@ -58,19 +58,21 @@ contract FundraiserManager {
     }
 
     function withdraw(uint256 _id) external {
-        require(_id < fundraisers.length, "Invalid ID");
-        Fundraiser storage f = fundraisers[_id];
+    require(_id < fundraisers.length, "Invalid ID");
+    Fundraiser storage f = fundraisers[_id];
 
-        require(msg.sender == f.owner, "Not owner");
-        require(f.totalCollected >= f.goal, "Goal not reached");
-        require(f.active, "Already withdrawn");
+    require(msg.sender == f.owner, "Not owner");
+    require(f.totalCollected >= f.goal, "Goal not reached");
+    require(f.active, "Already withdrawn");
+    uint256 amount = f.totalCollected;
+    f.active = false;
+    f.totalCollected = 0; 
+    (bool sent, ) = payable(f.owner).call{value: amount}("");
+    require(sent, "Failed to send Ether");
 
-        uint256 amount = f.totalCollected;
-        f.active = false;
-        f.owner.transfer(amount);
+    emit Withdrawn(_id, msg.sender);
+}
 
-        emit Withdrawn(_id, msg.sender);
-    }
 
     function getFundraisers() external view returns (Fundraiser[] memory) {
         return fundraisers;
